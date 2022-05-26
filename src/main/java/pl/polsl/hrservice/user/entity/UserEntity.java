@@ -1,5 +1,7 @@
 package pl.polsl.hrservice.user.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +29,8 @@ import java.util.Set;
 @Table(name = "users")
 @Getter
 @Setter
+@Builder(toBuilder = true)
+@AllArgsConstructor
 @NoArgsConstructor
 public class UserEntity {
     @Id
