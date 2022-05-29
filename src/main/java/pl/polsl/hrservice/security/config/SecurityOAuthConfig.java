@@ -95,6 +95,10 @@ public class SecurityOAuthConfig {
                     .csrf().disable()
                     .cors().disable()
                     .authorizeRequests()
+                    .antMatchers("/v3/api-docs/**", "/configuration/ui", "/swagger-resources/**",
+                            "/configuration/security", "/swagger-ui/**", "/webjars/**", "/auth/**",
+                            "/swagger-ui.html",
+                            "/actuator/health").permitAll()
                     .anyRequest().permitAll();
         }
     }
