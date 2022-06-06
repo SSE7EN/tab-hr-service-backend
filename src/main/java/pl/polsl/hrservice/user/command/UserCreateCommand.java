@@ -1,7 +1,7 @@
 package pl.polsl.hrservice.user.command;
 
 import lombok.Builder;
-import pl.polsl.hrservice.user.Role;
+import pl.polsl.hrservice.user.enumerator.Role;
 
 /**
  * Created by piotrswierzy on 25.03.2022

@@ -1,6 +1,6 @@
 package pl.polsl.hrservice.user.dto;
 
-import pl.polsl.hrservice.user.Role;
+import pl.polsl.hrservice.user.enumerator.Role;
 
 import java.time.ZonedDateTime;
 

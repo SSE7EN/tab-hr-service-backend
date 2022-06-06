@@ -1,7 +1,7 @@
 package pl.polsl.hrservice.user.domain;
 
 import lombok.Builder;
-import pl.polsl.hrservice.user.Role;
+import pl.polsl.hrservice.user.enumerator.Role;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;

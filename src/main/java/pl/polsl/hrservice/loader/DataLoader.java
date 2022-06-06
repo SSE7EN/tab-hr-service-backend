@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import pl.polsl.hrservice.user.Role;
+import pl.polsl.hrservice.user.enumerator.Role;
 import pl.polsl.hrservice.user.domain.User;
 import pl.polsl.hrservice.user.prop.AdminProperties;
 import pl.polsl.hrservice.user.repository.IUserRepository;

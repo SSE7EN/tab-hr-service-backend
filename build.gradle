@@ -41,6 +41,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+    implementation 'io.github.wimdeblauwe:error-handling-spring-boot-starter:1.7.0'
 }
 
 tasks.named('test') {

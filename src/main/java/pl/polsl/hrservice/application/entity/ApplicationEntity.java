@@ -26,7 +26,7 @@ public class ApplicationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "application")
     private List<DocumentEntity> documents;
 
 }
