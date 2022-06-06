@@ -3,7 +3,7 @@ package pl.polsl.hrservice.common.util;
 import lombok.experimental.UtilityClass;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
-import pl.polsl.hrservice.user.Role;
+import pl.polsl.hrservice.user.enumerator.Role;
 
 @UtilityClass
 public class SecurityUtil {

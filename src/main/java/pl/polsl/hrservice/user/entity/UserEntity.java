@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.polsl.hrservice.meeting.entity.MeetingEntity;
-import pl.polsl.hrservice.user.Role;
+import pl.polsl.hrservice.user.enumerator.Role;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

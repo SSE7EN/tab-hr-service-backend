@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.polsl.hrservice.common.domain.SecurityWrapper;
 import pl.polsl.hrservice.common.util.SecurityUtil;
-import pl.polsl.hrservice.user.Role;
+import pl.polsl.hrservice.user.enumerator.Role;
 import pl.polsl.hrservice.user.command.UserChangePasswordCommand;
 import pl.polsl.hrservice.user.command.UserPasswordResetCommand;
 import pl.polsl.hrservice.user.command.UserPasswordResetRequestCommand;

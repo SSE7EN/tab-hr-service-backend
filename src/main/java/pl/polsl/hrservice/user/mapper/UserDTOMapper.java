@@ -1,7 +1,7 @@
 package pl.polsl.hrservice.user.mapper;
 
 import org.mapstruct.Mapper;
-import pl.polsl.hrservice.user.Role;
+import pl.polsl.hrservice.user.enumerator.Role;
 import pl.polsl.hrservice.user.command.UserCreateCommand;
 import pl.polsl.hrservice.user.command.UserUpdateCommand;
 import pl.polsl.hrservice.user.domain.User;
