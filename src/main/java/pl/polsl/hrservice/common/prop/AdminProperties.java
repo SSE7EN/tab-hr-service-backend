@@ -1,4 +1,4 @@
-package pl.polsl.hrservice.user.prop;
+package pl.polsl.hrservice.common.prop;
 
 import lombok.Getter;
 import lombok.Setter;
