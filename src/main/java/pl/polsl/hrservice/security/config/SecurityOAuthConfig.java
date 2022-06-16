@@ -99,7 +99,7 @@ public class SecurityOAuthConfig {
                             "/configuration/security", "/swagger-ui/**", "/webjars/**", "/auth/**",
                             "/swagger-ui.html",
                             "/actuator/health").permitAll()
-                    .anyRequest().permitAll();
+                    .anyRequest().authenticated();
         }
     }
 
