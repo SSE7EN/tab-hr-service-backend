@@ -13,7 +13,7 @@ import pl.polsl.hrservice.user.exception.PasswordResetTokenExpiredException;
 import pl.polsl.hrservice.user.exception.UserInvalidOldPasswordException;
 import pl.polsl.hrservice.user.exception.UserNotFoundException;
 import pl.polsl.hrservice.user.exception.UserNotValidException;
-import pl.polsl.hrservice.user.prop.TokenProperties;
+import pl.polsl.hrservice.common.prop.TokenProperties;
 import pl.polsl.hrservice.user.repository.IUserRepository;
 
 import java.time.ZonedDateTime;

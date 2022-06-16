@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import pl.polsl.hrservice.user.enumerator.Role;
 import pl.polsl.hrservice.user.domain.User;
-import pl.polsl.hrservice.user.prop.AdminProperties;
+import pl.polsl.hrservice.common.prop.AdminProperties;
 import pl.polsl.hrservice.user.repository.IUserRepository;
 import pl.polsl.hrservice.user.repository.UserJpaRepository;
 
