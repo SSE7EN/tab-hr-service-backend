@@ -101,6 +101,7 @@ public class SecurityOAuthConfig {
                             "/swagger-ui.html",
                             "/actuator/health").permitAll()
                     .antMatchers(HttpMethod.POST, "/candidates").permitAll()
+                    .antMatchers(HttpMethod.GET, "/positions", "/positions/{id}").permitAll()
                     .anyRequest().authenticated();
         }
     }
