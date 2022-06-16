@@ -51,7 +51,7 @@ public class UserController {
     private final IUserPasswordService userPasswordService;
 
     @SecurityRequirement(name = "bearerAuth")
-    @PreAuthorize("hasAuthority(T(pl.polsl.hrservice.user.enumerator).ADMIN)")
+    @PreAuthorize("hasAuthority(T(pl.polsl.hrservice.user.enumerator.Role).ADMIN)")
     @PostMapping("/admins")
     public UserDTO create(@RequestBody UserCreateDTO dto) {
         final var user = userCreateService.create(mapper.map(dto, Role.ADMIN));
