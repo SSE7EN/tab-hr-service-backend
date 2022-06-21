@@ -4,9 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.polsl.hrservice.candidate.entity.CandidateEntity;
+import pl.polsl.hrservice.meeting.enumerator.MeetingType;
 import pl.polsl.hrservice.user.entity.UserEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +18,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.time.ZonedDateTime;
 import java.util.Set;
 
 /**
@@ -41,5 +45,10 @@ public class MeetingEntity {
             joinColumns = { @JoinColumn(name = "fk_interviewer") },
             inverseJoinColumns = { @JoinColumn(name = "fk_meeting") })
     private Set<UserEntity> interviewers;
+
+    @Enumerated(EnumType.STRING)
+    private MeetingType meetingType;
+
+    private ZonedDateTime dateTime;
 
 }
