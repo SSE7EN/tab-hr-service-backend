@@ -113,7 +113,7 @@ public class DataLoader {
         final var position1 = positionCreateService.create(
                 PositionCreateCommand.builder()
                         .description("Position 1 description")
-                        .programmingLanguages(List.of(ProgrammingLanguage.JAVA))
+                        .programmingLanguages(Set.of(ProgrammingLanguage.JAVA))
                         .name("Position 1")
                         .build()
         );
@@ -121,7 +121,7 @@ public class DataLoader {
         final var position2 = positionCreateService.create(
                 PositionCreateCommand.builder()
                         .description("Position 2 description")
-                        .programmingLanguages(List.of(ProgrammingLanguage.PYTHON))
+                        .programmingLanguages(Set.of(ProgrammingLanguage.PYTHON))
                         .name("Position 2")
                         .build()
         );
@@ -129,7 +129,7 @@ public class DataLoader {
         final var position3 = positionCreateService.create(
                 PositionCreateCommand.builder()
                         .description("Position 3 description")
-                        .programmingLanguages(List.of(ProgrammingLanguage.C_PLUS_PLUS))
+                        .programmingLanguages(Set.of(ProgrammingLanguage.C_PLUS_PLUS))
                         .name("Position 3")
                         .build()
         );
