@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by piotrswierzy on 31.03.2022
@@ -34,7 +35,7 @@ public class PositionEntity {
 
     @Enumerated(value = EnumType.STRING)
     @ElementCollection(targetClass = ProgrammingLanguage.class)
-    private List<ProgrammingLanguage> programmingLanguages;
+    private Set<ProgrammingLanguage> programmingLanguages;
 
 
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        @font-face {
+            font-family:"Arial Unicode MS";
+            src: url(ArialUnicodeMS.ttf) format('truetype');
+        }
+
+        @page {
+            size: 21cm 29.7cm;
+            margin: 0;
+            padding: 0.5cm;
+        }
+
+        table {
+            width: 90%;
+        }
+        table, th, td {
+            border: 1px solid;
+            margin: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div th:class="'label-wrapper'">
+    <table class="label-header">
+        <tr>
+            <td>Report:</td>
+            <td th:text="${report.generationTime}"></td>
+        </tr>
+    </table>
+</div>
+<div class="container" style="padding-top: 100px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div style="overflow-x:auto;">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Programming Languages</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="position: ${report.positionInfo.positions}">
+                    <tr>
+                        <td th:text="${position.id}"></td>
+                        <td th:text="${position.name}"></td>
+                        <td th:text="${position.getProgrammingLanguagesNames}"></td>
+                    </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+                <div style="text-align: center;">
+                    <span>
+                        Programming language ranking
+                    </span>
+                </div>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Nr</th>
+                        <th>Language</th>
+                        <th>Count</th>
+                    </tr>
+                    <th:block th:each="language, iter: ${report.positionInfo.mostCommonProgrammingLanguages}">
+                        <tr>
+                            <td th:text="${iter.count}"></td>
+                            <td th:text="${language.programmingLanguage}"></td>
+                            <td th:text="${language.occurrences}"></td>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
