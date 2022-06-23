@@ -10,6 +10,7 @@ import java.util.Optional;
  */
 public interface IDocumentRepository {
     Document create(Document document);
+    Document save(Document document);
     Optional<Document> read(Long id);
     List<Document> readByApplication(Long id);
 }

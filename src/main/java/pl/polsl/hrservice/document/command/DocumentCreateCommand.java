@@ -7,9 +7,7 @@ import pl.polsl.hrservice.document.enumerator.DocumentType;
  * Created by piotrswierzy on 06.06.2022
  */
 public record DocumentCreateCommand(
-        UploadMultipartFileCommand uploadMultipartFileCommand,
-        DocumentType documentType,
-        Long applicationId
+        UploadMultipartFileCommand uploadMultipartFileCommand
 ) {
     @Builder(toBuilder = true) public DocumentCreateCommand{}
 }
