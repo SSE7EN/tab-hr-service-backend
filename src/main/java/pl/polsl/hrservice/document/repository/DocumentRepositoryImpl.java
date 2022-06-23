@@ -19,6 +19,11 @@ public class DocumentRepositoryImpl implements IDocumentRepository {
     private final DocumentEntityMapperWrapper mapper;
     @Override
     public Document create(Document document) {
+        return save(document);
+    }
+
+    @Override
+    public Document save(Document document) {
         return mapper.map(
                 documentJpaRepository.save(
                         mapper.map(document)

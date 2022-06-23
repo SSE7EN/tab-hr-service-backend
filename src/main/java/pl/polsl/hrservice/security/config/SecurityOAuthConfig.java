@@ -102,6 +102,8 @@ public class SecurityOAuthConfig {
                             "/actuator/health").permitAll()
                     .antMatchers(HttpMethod.POST, "/candidates").permitAll()
                     .antMatchers(HttpMethod.GET, "/positions", "/positions/{id}").permitAll()
+                    .antMatchers(HttpMethod.POST, "/documents").permitAll()
+                    .antMatchers(HttpMethod.PUT, "/documents/{id}").permitAll()
                     .anyRequest().authenticated();
         }
     }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.polsl.hrservice.application.service.IApplicationReadService;
 import pl.polsl.hrservice.document.command.DocumentCreateCommand;
+import pl.polsl.hrservice.document.command.DocumentUpdateCommand;
 import pl.polsl.hrservice.document.domain.Document;
 import pl.polsl.hrservice.document.exception.DocumentNotFoundException;
 import pl.polsl.hrservice.document.repository.IDocumentRepository;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class DocumentService implements IDocumentCreateService, IDocumentReadService{
+public class DocumentService implements IDocumentCreateService, IDocumentUpdateService, IDocumentReadService{
     private final StorageHandler storageHandler;
     private final IDocumentRepository documentRepository;
     private final IApplicationReadService applicationReadService;
@@ -25,15 +26,25 @@ public class DocumentService implements IDocumentCreateService, IDocumentReadSer
     @Override
     @Transactional
     public Document create(DocumentCreateCommand command) throws IOException {
-        final var application = applicationReadService.read(command.applicationId());
         final var storageResponse = storageHandler.uploadPublic(
                 command.uploadMultipartFileCommand());
 
         return documentRepository.create(
                 Document.builder()
+                        .url(storageResponse.url())
+                        .build()
+        );
+    }
+
+    @Override
+    @Transactional
+    public Document update(DocumentUpdateCommand command) throws IOException {
+        final var document = read(command.id());
+        final var application = applicationReadService.read(command.applicationId());
+        return documentRepository.save(
+                document.toBuilder()
                         .documentType(command.documentType())
                         .application(application)
-                        .url(storageResponse.url())
                         .build()
         );
     }
