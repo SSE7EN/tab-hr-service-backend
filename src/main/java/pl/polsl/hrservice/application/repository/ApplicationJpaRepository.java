@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import pl.polsl.hrservice.application.entity.ApplicationEntity;
 
 import javax.persistence.Lob;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -14,4 +15,5 @@ public interface ApplicationJpaRepository extends JpaRepository<ApplicationEntit
         JpaSpecificationExecutor<ApplicationEntity> {
 
     Optional<ApplicationEntity> findByIdAndAndCandidateId(Long id, Long candidateId);
+    List<ApplicationEntity> findAllByCandidateId(Long candidateId);
 }

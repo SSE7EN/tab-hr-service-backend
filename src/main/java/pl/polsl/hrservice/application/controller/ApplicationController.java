@@ -23,6 +23,10 @@ import pl.polsl.hrservice.application.service.IApplicationCreateService;
 import pl.polsl.hrservice.application.service.IApplicationReadService;
 import pl.polsl.hrservice.application.service.IApplicationUpdateService;
 import pl.polsl.hrservice.common.domain.SecurityWrapper;
+import pl.polsl.hrservice.common.util.SecurityUtil;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by piotrswierzy on 16.06.2022
@@ -68,5 +72,17 @@ public class ApplicationController {
         return applicationReadService.readAll(query, pageable)
                 .map(mapperWrapper::map);
     }
+
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("hasAuthority(T(pl.polsl.hrservice.user.enumerator.Role).CANDIDATE)")
+    @GetMapping("/current")
+    public List<ApplicationDTO> readAllCandidatesApplications() {
+        return applicationReadService.readAll(SecurityUtil.getCurrentUserMainEmail())
+                .stream()
+                .map(mapperWrapper::map)
+                .collect(Collectors.toList());
+    }
+
+
 
 }
