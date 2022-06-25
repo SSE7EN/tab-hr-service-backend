@@ -7,11 +7,12 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import pl.polsl.hrservice.application.domain.Application;
 import pl.polsl.hrservice.application.entity.ApplicationEntity;
-import pl.polsl.hrservice.application.mapper.ApplicationEntityMapper;
 import pl.polsl.hrservice.application.mapper.ApplicationEntityMapperWrapper;
 import pl.polsl.hrservice.application.query.ApplicationQuery;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by piotrswierzy on 06.06.2022
@@ -47,6 +48,14 @@ public class ApplicationRepositoryImpl implements IApplicationRepository {
     public Page<Application> readAll(final ApplicationQuery query, final Pageable page) {
         return applicationJpaRepository.findAll(queryToSpec(query), page)
                 .map(mapperWrapper::map);
+    }
+
+    @Override
+    public List<Application> readAllByCandidate(final Long id) {
+        return applicationJpaRepository.findAllByCandidateId(id)
+                .stream()
+                .map(mapperWrapper::map)
+                .collect(Collectors.toList());
     }
 
     private Specification<ApplicationEntity> queryToSpec(final ApplicationQuery query){

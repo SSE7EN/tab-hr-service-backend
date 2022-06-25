@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import pl.polsl.hrservice.application.domain.Application;
 import pl.polsl.hrservice.application.query.ApplicationQuery;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -15,5 +16,7 @@ public interface IApplicationRepository {
     Optional<Application> read(Long id);
     Optional<Application> readByIdAndCandidateId(Long id, Long candidateId);
     Page<Application> readAll(ApplicationQuery query, Pageable page);
+
+    List<Application> readAllByCandidate(Long id);
 
 }

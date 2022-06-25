@@ -15,6 +15,8 @@ import pl.polsl.hrservice.candidate.service.ICandidateReadService;
 import pl.polsl.hrservice.common.domain.SecurityWrapper;
 import pl.polsl.hrservice.position.service.IPositionReadService;
 
+import java.util.List;
+
 /**
  * Created by piotrswierzy on 06.06.2022
  */
@@ -43,6 +45,13 @@ public class ApplicationServiceImpl implements IApplicationReadService,
     @Transactional(readOnly = true)
     public Page<Application> readAll(final ApplicationQuery query, final Pageable page) {
         return applicationRepository.readAll(query, page);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Application> readAll(String email) {
+        final var candidate = candidateReadService.read(email);
+        return applicationRepository.readAllByCandidate(candidate.id());
     }
 
     @Override
