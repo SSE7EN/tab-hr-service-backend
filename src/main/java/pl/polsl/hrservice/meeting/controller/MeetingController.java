@@ -44,7 +44,7 @@ public class MeetingController {
     private final IMeetingReadService meetingReadService;
 
     @SecurityRequirement(name = "bearerAuth")
-    @PreAuthorize("hasAuthority(T(pl.polsl.hrservice.user.enumerator.Role).CANDIDATE)")
+    @PreAuthorize("hasAuthority(T(pl.polsl.hrservice.user.enumerator.Role).ADMIN)")
     @PostMapping
     public MeetingDTO create(@RequestBody MeetingCreateDTO dto) {
         final var application = meetingCreateService.create(mapperWrapper.map(dto));
@@ -52,7 +52,7 @@ public class MeetingController {
     }
 
     @SecurityRequirement(name = "bearerAuth")
-    @PreAuthorize("hasAuthority(T(pl.polsl.hrservice.user.enumerator.Role).CANDIDATE)")
+    @PreAuthorize("hasAuthority(T(pl.polsl.hrservice.user.enumerator.Role).ADMIN)")
     @PutMapping("/{id}")
     public MeetingDTO update(@PathVariable("id") final Long id, final @RequestBody MeetingUpdateDTO dto) {
         final var application = meetingUpdateService.update(mapperWrapper.map(dto, id));
