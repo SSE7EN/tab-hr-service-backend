@@ -99,7 +99,8 @@ public class SecurityOAuthConfig {
                     .antMatchers("/v3/api-docs/**", "/configuration/ui", "/swagger-resources/**",
                             "/configuration/security", "/swagger-ui/**", "/webjars/**", "/auth/**",
                             "/swagger-ui.html",
-                            "/actuator/health").permitAll()
+                            "/actuator/health",
+                            "/images/**").permitAll()
                     .antMatchers(HttpMethod.POST, "/candidates").permitAll()
                     .antMatchers(HttpMethod.GET, "/positions", "/positions/{id}").permitAll()
                     .antMatchers(HttpMethod.POST, "/documents").permitAll()
