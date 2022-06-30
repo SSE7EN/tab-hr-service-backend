@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.polsl.hrservice.application.command.ApplicationCreateCommand;
 import pl.polsl.hrservice.application.command.ApplicationUpdateCommand;
 import pl.polsl.hrservice.application.domain.Application;
+import pl.polsl.hrservice.application.enumerator.ApplicationStatus;
 import pl.polsl.hrservice.application.exception.ApplicationNotFoundException;
 import pl.polsl.hrservice.application.query.ApplicationQuery;
 import pl.polsl.hrservice.application.repository.IApplicationRepository;
@@ -65,6 +66,7 @@ public class ApplicationServiceImpl implements IApplicationReadService,
                         .candidate(candidate)
                         .position(position)
                         .description(command.description())
+                        .status(ApplicationStatus.IN_PROGRESS)
                         .build()
         );
     }
@@ -80,6 +82,7 @@ public class ApplicationServiceImpl implements IApplicationReadService,
                 application.toBuilder()
                         .position(position)
                         .description(command.description())
+                        .status(command.status())
                         .build()
         );
     }
