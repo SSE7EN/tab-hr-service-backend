@@ -7,14 +7,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.polsl.hrservice.application.command.ApplicationStatusUpdateCommand;
 import pl.polsl.hrservice.application.dto.ApplicationCreateDTO;
 import pl.polsl.hrservice.application.dto.ApplicationDTO;
+import pl.polsl.hrservice.application.dto.ApplicationStatusUpdateDTO;
 import pl.polsl.hrservice.application.dto.ApplicationUpdateDTO;
 import pl.polsl.hrservice.application.mapper.ApplicationDTOMapper;
 import pl.polsl.hrservice.application.mapper.ApplicationDTOMapperWrapper;
@@ -54,6 +57,16 @@ public class ApplicationController {
     @PutMapping("/{id}")
     public ApplicationDTO update(@PathVariable("id") final Long id, final @RequestBody ApplicationUpdateDTO dto) {
         final var application = applicationUpdateService.update(SecurityWrapper.of(mapper.map(dto, id)));
+        return mapperWrapper.map(application);
+    }
+
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("hasAuthority(T(pl.polsl.hrservice.user.enumerator.Role).ADMIN)")
+    @PatchMapping("/status/{id}")
+    public ApplicationDTO updateStatus(@PathVariable("id") final Long id, final @RequestBody ApplicationStatusUpdateDTO dto) {
+        final var application = applicationUpdateService.update(ApplicationStatusUpdateCommand.builder()
+                .status(dto.status())
+                .id(id).build());
         return mapperWrapper.map(application);
     }
 
