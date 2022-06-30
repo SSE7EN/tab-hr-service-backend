@@ -1,6 +1,7 @@
 package pl.polsl.hrservice.application.dto;
 
 import lombok.Builder;
+import pl.polsl.hrservice.application.enumerator.ApplicationStatus;
 import pl.polsl.hrservice.candidate.domain.Candidate;
 import pl.polsl.hrservice.candidate.dto.CandidateDTO;
 import pl.polsl.hrservice.document.domain.Document;
@@ -18,7 +19,8 @@ public record ApplicationDTO(
         String description,
         List<DocumentDTO> documents,
         PositionDTO position,
-        CandidateDTO candidate
+        CandidateDTO candidate,
+        ApplicationStatus status
 ) {
     @Builder(toBuilder = true) public ApplicationDTO {}
 }

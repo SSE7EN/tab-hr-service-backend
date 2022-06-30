@@ -1,6 +1,7 @@
 package pl.polsl.hrservice.application.domain;
 
 import lombok.Builder;
+import pl.polsl.hrservice.application.enumerator.ApplicationStatus;
 import pl.polsl.hrservice.candidate.domain.Candidate;
 import pl.polsl.hrservice.document.domain.Document;
 import pl.polsl.hrservice.position.domain.Position;
@@ -15,7 +16,8 @@ public record Application(
         String description,
         List<Document> documents,
         Position position,
-        Candidate candidate
+        Candidate candidate,
+        ApplicationStatus status
 ) {
     @Builder(toBuilder = true) public Application{}
 }
