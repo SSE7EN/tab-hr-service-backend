@@ -1,5 +1,6 @@
 package pl.polsl.hrservice.application.command;
 
+import lombok.Builder;
 import pl.polsl.hrservice.application.enumerator.ApplicationStatus;
 import pl.polsl.hrservice.candidate.domain.Candidate;
 import pl.polsl.hrservice.document.domain.Document;
@@ -13,7 +14,7 @@ import java.util.List;
 public record ApplicationUpdateCommand(
         Long id,
         Long positionId,
-        String description,
-        ApplicationStatus status
+        String description
 ) {
+
 }

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.polsl.hrservice.application.command.ApplicationCreateCommand;
+import pl.polsl.hrservice.application.command.ApplicationStatusUpdateCommand;
 import pl.polsl.hrservice.application.command.ApplicationUpdateCommand;
 import pl.polsl.hrservice.application.domain.Application;
 import pl.polsl.hrservice.application.enumerator.ApplicationStatus;
@@ -82,6 +83,16 @@ public class ApplicationServiceImpl implements IApplicationReadService,
                 application.toBuilder()
                         .position(position)
                         .description(command.description())
+                        .build()
+        );
+    }
+
+    @Override
+    @Transactional
+    public Application update(ApplicationStatusUpdateCommand command) {
+        final var application = read(command.id());
+        return applicationRepository.save(
+                application.toBuilder()
                         .status(command.status())
                         .build()
         );
