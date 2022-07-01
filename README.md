@@ -24,7 +24,7 @@ or on windows probably
 
 
 ## Check api
-go to http://localhost:8080/swagger-ui/
+go to http://localhost:8080/swagger-ui/index.html
 there you have apis names, when you click on it you have url and method, example response.
 to the right you have try it out, click on it, then execute and you will have response to your request. <br/>
 In some requests you can change values in inputs and stuff, edit it as you need
